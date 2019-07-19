@@ -1,5 +1,6 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
+import sns from "../../apis/sns";
 
 const PostShare = () => {
   return (
@@ -18,8 +19,8 @@ const FormikPostShare = withFormik({
       post: post || ""
     };
   },
-  handleSubmit(values) {
-    console.log(values);
+  async handleSubmit(values) {
+    await sns.post("./posts", values);
   }
 })(PostShare);
 

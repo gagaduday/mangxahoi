@@ -1,8 +1,9 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
-import sns from "../../apis/sns";
+import { connect } from "react-redux";
+import { createPost } from "../../actions";
 
-const PostShare = () => {
+const PostShare = props => {
   return (
     <div>
       <Form className="ui form">
@@ -19,9 +20,12 @@ const FormikPostShare = withFormik({
       post: post || ""
     };
   },
-  async handleSubmit(values) {
-    await sns.post("./posts", values);
+  async handleSubmit(values, { props }) {
+    props.createPost(values);
   }
 })(PostShare);
 
-export default FormikPostShare;
+export default connect(
+  null,
+  { createPost }
+)(FormikPostShare);

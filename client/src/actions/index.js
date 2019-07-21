@@ -24,7 +24,12 @@ export const signOut = () => {
   };
 };
 
-// tạo post
+// // tạo post
+export const createPost = values => async (dispatch, getState) => {
+  const { userId } = getState().auth;
+  const response = await sns.post("/posts", { ...values, userId });
+  dispatch({ type: CREATE_POST, payload: response.data });
+};
 
 // hiện nhiều post
 export const fetchPosts = () => async dispatch => {

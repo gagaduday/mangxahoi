@@ -8,11 +8,12 @@ class GoogleAuth extends React.Component {
       window.gapi.client
         .init({
           clientId:
-            "190064613803-76j62bn4uh67dcl4a879e01c5khdnmqf.apps.googleusercontent.com",
+            "1067885630204-q3rl8875cq8vigm107p0bkqng40ab6t3.apps.googleusercontent.com",
           scope: "email"
         })
         .then(() => {
           this.auth = window.gapi.auth2.getAuthInstance();
+
           this.onAuthChange(this.auth.isSignedIn.get());
           this.auth.isSignedIn.listen(this.onAuthChange);
         });
@@ -40,22 +41,16 @@ class GoogleAuth extends React.Component {
       return null;
     } else if (this.props.isSignedIn) {
       return (
-        <button
-          onClick={this.onSignOutClick}
-          className="ui black google button"
-        >
+        <button onClick={this.onSignOutClick} className="ui red google button">
           <i className="google icon" />
-          Sign Out
+          Đăng Xuất
         </button>
       );
     } else {
       return (
-        <button
-          onClick={this.onSignInClick}
-          className="ui yellow google button"
-        >
+        <button onClick={this.onSignInClick} className="ui red google button">
           <i className="google icon" />
-          Sign In
+          Đăng Nhập Bằng Google
         </button>
       );
     }

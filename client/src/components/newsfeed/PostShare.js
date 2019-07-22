@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import { connect } from "react-redux";
 import { createPost } from "../../actions";
 
-const PostShare = props => {
+const PostShare = () => {
   return (
     <div>
       <Form className="ui form">

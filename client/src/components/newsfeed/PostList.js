@@ -1,10 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchPosts } from "../../actions";
+import { Button, Popup } from "semantic-ui-react";
 
 class PostList extends React.Component {
   componentDidMount() {
     this.props.fetchPosts();
+  }
+
+  renderAdmin(post) {
+    if (post.userId === this.props.currentUserId && post.userId !== null) {
+      return (
+        <Popup
+          content="I will not flip!"
+          on="click"
+          pinned
+          trigger={<div>...</div>}
+        >
+          <Button>Edit</Button>
+          <Button>Delete</Button>
+        </Popup>
+      );
+    }
   }
 
   renderList() {
@@ -12,6 +29,7 @@ class PostList extends React.Component {
       return (
         <div className="item" key={post.id}>
           <div className="content">{post.post}</div>
+          {this.renderAdmin(post)}
         </div>
       );
     });
@@ -24,7 +42,10 @@ class PostList extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { posts: Object.values(state.posts) };
+  return {
+    posts: Object.values(state.posts),
+    currentUserId: state.auth.userId
+  };
 };
 
 export default connect(

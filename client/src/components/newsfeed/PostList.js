@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchPosts } from "../../actions";
 import { Button, Popup } from "semantic-ui-react";
 
@@ -11,14 +12,9 @@ class PostList extends React.Component {
   renderAdmin(post) {
     if (post.userId === this.props.currentUserId && post.userId !== null) {
       return (
-        <Popup
-          content="I will not flip!"
-          on="click"
-          pinned
-          trigger={<div>...</div>}
-        >
-          <Button>Edit</Button>
-          <Button>Delete</Button>
+        <Popup on="click" pinned trigger={<div>...</div>}>
+          <Link to={`/posts/edit/${post.id}`}>Edit</Link>
+          <Link>Delete</Link>
         </Popup>
       );
     }
@@ -36,7 +32,6 @@ class PostList extends React.Component {
   }
 
   render() {
-    console.log(this.props.posts);
     return <div className="ui celled list">{this.renderList()}</div>;
   }
 }

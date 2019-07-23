@@ -1,3 +1,5 @@
+import sns from "../apis/sns";
+import history from "../history";
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -7,8 +9,6 @@ import {
   DELETE_POST,
   EDIT_POST
 } from "./types";
-
-import sns from "../apis/sns";
 
 // đăng nhập bằng google
 export const signIn = userId => {
@@ -29,6 +29,7 @@ export const createPost = values => async (dispatch, getState) => {
   const { userId } = getState().auth;
   const response = await sns.post("/posts", { ...values, userId });
   dispatch({ type: CREATE_POST, payload: response.data });
+  history.push("/");
 };
 
 // hiện nhiều post

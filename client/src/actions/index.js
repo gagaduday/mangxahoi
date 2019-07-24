@@ -46,12 +46,14 @@ export const fetchPost = id => async dispatch => {
 
 // sửa post
 export const editPost = (id, values) => async dispatch => {
-  const response = await sns.put(`/posts/${id}`, values);
+  const response = await sns.patch(`/posts/${id}`, values);
   dispatch({ type: EDIT_POST, payload: response.data });
+  history.push("/");
 };
 
 // xoắ post
 export const deletePost = id => async dispatch => {
   await sns.delete(`posts/${id}`);
   dispatch({ type: DELETE_POST, payload: id });
+  history.push("/");
 };

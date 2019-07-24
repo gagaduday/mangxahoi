@@ -25,13 +25,15 @@ class PostEdit extends React.Component {
 }
 
 const FormikPostEdit = withFormik({
-  mapPropsToValues(post) {
+  mapPropsToValues(props) {
+    console.log(props);
+    if (!props.post) return null;
     return {
-      post: post || { post: this.props.post.post }
+      post: props.post.post
     };
   },
-  handleSubmit(values) {
-    console.log(values);
+  handleSubmit(values, { props }) {
+    props.editPost(props.match.params.id, values);
   }
 })(PostEdit);
 

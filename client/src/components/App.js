@@ -5,6 +5,8 @@ import Header from "./header/Header";
 import PostShare from "./newsfeed/PostShare";
 import PostList from "./newsfeed/PostList";
 import PostEdit from "./newsfeed/PostEdit";
+import PostDelte from "./newsfeed/PostDelete";
+import PostShow from "./newsfeed/PostShow";
 import Register from "./register/Register";
 import history from "../history";
 
@@ -17,6 +19,8 @@ const App = () => {
           <Route path="/" exact component={PostList} />
           <Route path="/posts/share" exact component={PostShare} />
           <Route path="/posts/edit/:id" exact component={PostEdit} />
+          <Route path="/posts/delete/:id" exact component={PostDelte} />
+          <Route path="/posts/:id" exact component={PostShow} />
           <Route path="/register" exact component={Register} />
         </Switch>
       </Router>

@@ -13,16 +13,12 @@ class PostEdit extends React.Component {
   renderContent() {
     return (
       <React.Fragment>
-        <div>{this.props.post.post}</div>
         <div>
           <Form className="ui form">
-            <Field
-              type="text"
-              name="post"
-              // initialValues={{ post: this.props.post.post }}
-              // enableReinitialize
-            />
-            <button className="ui button primary">Tweet</button>
+            <Field type="text" name="post" />
+            <button className="ui button primary" type="submit">
+              Tweet
+            </button>
           </Form>
         </div>
       </React.Fragment>
@@ -30,6 +26,8 @@ class PostEdit extends React.Component {
   }
 
   render() {
+    if (this.props.isFetching) return "Loading...";
+    if (this.props.error) return <div>{this.props.error}</div>;
     if (!this.props.post) return null;
     return (
       <Modal
@@ -41,20 +39,19 @@ class PostEdit extends React.Component {
 }
 
 const FormikPostEdit = withFormik({
-  mapPropsToValues(props) {
-    console.log(props);
-    if (!props.post) return null;
-    return {
-      post: props.post.post
-    };
-  },
+  mapPropsToValues: props => ({ post: props.post ? props.post.post : "" }),
+  enableReinitialize: true,
   handleSubmit(values, { props }) {
     props.editPost(props.match.params.id, values);
   }
 })(PostEdit);
 
 const mapStateToProps = (state, ownProps) => {
-  return { post: state.posts[ownProps.match.params.id], isFetching: true };
+  return {
+    post: state.posts[ownProps.match.params.id],
+    isFetching: state.posts.isFetching,
+    error: state.posts.error
+  };
 };
 
 export default connect(

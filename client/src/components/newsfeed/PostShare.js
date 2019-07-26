@@ -11,7 +11,12 @@ const PostShare = () => {
     return (
       <React.Fragment>
         <Form className="ui form">
-          <Field type="text" name="post" placeholder="What's happening?" />
+          <Field
+            type="text"
+            name="post"
+            placeholder="What's happening?"
+            autocomplete="off"
+          />
           <button type="submit" className="button-postshare">
             Tweet
           </button>

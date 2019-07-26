@@ -6,6 +6,8 @@ import {
   CREATE_POST,
   FETCH_POSTS,
   FETCH_POST,
+  FETCH_POST_FAILURE,
+  FETCH_POST_SUCCESS,
   DELETE_POST,
   EDIT_POST
 } from "./types";
@@ -40,8 +42,13 @@ export const fetchPosts = () => async dispatch => {
 
 // hiện 1 post
 export const fetchPost = id => async dispatch => {
-  const response = await sns.get(`/posts/${id}`);
-  dispatch({ type: FETCH_POST, payload: response.data });
+  dispatch({ type: FETCH_POST });
+  try {
+    const response = await sns.get(`/posts/${id}`);
+    dispatch({ type: FETCH_POST_SUCCESS, payload: response.data });
+  } catch (e) {
+    dispatch({ type: FETCH_POST_FAILURE, error: e });
+  }
 };
 
 // sửa post

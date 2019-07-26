@@ -18,9 +18,9 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={PostList} />
           <Route path="/posts/share" exact component={PostShare} />
-          <Route path="/posts/edit/:id" exact component={PostEdit} />
-          <Route path="/posts/delete/:id" exact component={PostDelte} />
-          <Route path="/posts/:id" exact component={PostShow} />
+          <Route path="/posts/edit/:id" component={PostEdit} />
+          <Route path="/posts/delete/:id" component={PostDelte} />
+          <Route path="/posts/:id" component={PostShow} />
           <Route path="/register" exact component={Register} />
         </Switch>
       </Router>

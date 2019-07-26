@@ -1,3 +1,31 @@
-.header-icon {
+.header-icon-div {
+  display: flex;
+  justify-content: space-between;
   font-size: x-large;
+  margin: 25px 3% 25px 2%;
+}
+
+.instagram-div {
+  min-width: 20%;
+  max-width: 40%;
+}
+
+.instagram-icon {
+  padding-right: 10%;
+  border-right: 1px grey;
+  color: black;
+  display: flex;
+}
+
+.instagram-text-span {
+  color: black;
+  margin-left: 10%;
+  font-family: Brush Script MT, sans-serif;
+  font-size: xx-large;
+}
+
+.header-icon-span {
+  margin-left: 10%;
+  width: 10%;
+  max-width: 20%;
 }

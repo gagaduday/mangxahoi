@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPosts } from "../../actions";
-import { Button, Popup } from "semantic-ui-react";
+import { Popup } from "semantic-ui-react";
 import "./post.css";
 
 class PostList extends React.Component {
@@ -13,26 +13,32 @@ class PostList extends React.Component {
   renderAdmin(post) {
     if (post.userId === this.props.currentUserId && post.userId !== null) {
       return (
-        // <Popup on="click" pinned trigger={<p>...</p>}>
-        <div>
-          <Link className="ui button primary" to={`/posts/edit/${post.id}`}>
+        <Popup
+          on="click"
+          pinned
+          trigger={<span className="postlist-popup-span">...</span>}
+        >
+          <Link className="postlist-action-link" to={`/posts/edit/${post.id}`}>
             Edit
           </Link>
-          <Link className="ui button" to={`/posts/delete/${post.id}`}>
+          <Link
+            className="postlist-action-link"
+            to={`/posts/delete/${post.id}`}
+          >
             Delete
           </Link>
-        </div>
-        // </Popup>
+        </Popup>
       );
     }
   }
 
   renderList() {
     return this.props.posts.map(post => {
+      if (!post) return null;
       return (
-        <div className="item" key={post.id}>
-          <div className="content">
-            <Link to={`/posts/${post.id}`} className="header">
+        <div className="postlist-div" key={post.id}>
+          <div className="postlist-content-div">
+            <Link className="postlist-content-link" to={`/posts/${post.id}`}>
               {post.post}
             </Link>
           </div>
@@ -43,6 +49,9 @@ class PostList extends React.Component {
   }
 
   render() {
+    if (!this.props.posts) {
+      return null;
+    }
     return (
       <div className="ui container">
         <Link to="/posts/share">

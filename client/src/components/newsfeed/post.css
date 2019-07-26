@@ -1,3 +1,4 @@
+/* button tweet trong postshare */
 .button-postshare {
   margin-top: 10px;
   color: white;
@@ -13,4 +14,59 @@
     rgb(29, 161, 242);
   border-radius: 9999px 9999px 9999px 9999px;
   cursor: pointer;
+}
+
+/* nội dung post */
+.postlist-div {
+  min-height: 35px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: auto;
+}
+
+.postlist-div:hover {
+  border: 1px solid #2f4f4f;
+}
+
+.postlist-content-div {
+  cursor: pointer;
+  max-width: 85%;
+}
+
+.postlist-content-link {
+  color: black;
+  margin-top: 8px;
+  margin-left: 10px;
+  float: left;
+}
+
+.postlist-content-link:hover {
+  color: black;
+}
+
+.postlist-popup-span {
+  position: relative;
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-top: -5px;
+  font-size: x-large;
+}
+
+.postlist-popup-span:hover {
+  color: black;
+  font-weight: bold;
+}
+
+/* 2 nút edit và delete */
+.postlist-action-link {
+  display: block;
+  color: black;
+  margin-bottom: 3px;
+}
+
+.postlist-action-link:hover {
+  background-color: #3b5998;
+  color: white;
 }

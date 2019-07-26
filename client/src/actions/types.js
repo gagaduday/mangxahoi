@@ -7,6 +7,8 @@ export const CREATE_POST = "CREATE_POST";
 export const FETCH_POSTS = "FETCH_POSTS";
 
 export const FETCH_POST = "FETCH_POST";
+export const FETCH_POST_SUCCESS = "FETCH_POST_SUCCESS";
+export const FETCH_POST_FAILURE = "FETCH_POST_FAILURE";
 
 export const DELETE_POST = "DELETE_POST";
 

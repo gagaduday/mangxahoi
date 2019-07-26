@@ -1,0 +1,16 @@
+.button-postshare {
+  margin-top: 10px;
+  color: white;
+  font-size: 14px;
+  font-family: monospace;
+  font-weight: bold;
+  background-color: rgb(29, 161, 242);
+  min-width: calc(62.79px);
+  min-height: 34px;
+  box-shadow: none;
+  border: none;
+  border-color: rgb(29, 161, 242) rgb(29, 161, 242) rgb(29, 161, 242)
+    rgb(29, 161, 242);
+  border-radius: 9999px 9999px 9999px 9999px;
+  cursor: pointer;
+}

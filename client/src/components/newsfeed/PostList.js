@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchPosts } from "../../actions";
 import { Button, Popup } from "semantic-ui-react";
+import "./post.css";
 
 class PostList extends React.Component {
   componentDidMount() {
@@ -43,11 +44,17 @@ class PostList extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="ui celled list">{this.renderList()}</div>
-        <Link to="/posts/share" className="ui button">
-          Create Post
+      <div className="ui container">
+        <Link to="/posts/share">
+          <form className="ui form">
+            <input
+              className="input-postlist"
+              type="text"
+              placeholder="What's happening?"
+            />
+          </form>
         </Link>
+        <div className="ui celled list">{this.renderList()}</div>
       </div>
     );
   }

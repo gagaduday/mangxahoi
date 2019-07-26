@@ -2,15 +2,26 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import { connect } from "react-redux";
 import { createPost } from "../../actions";
+import history from "../../history";
+import Modal from "../Modal";
+import "./post.css";
 
 const PostShare = () => {
+  const renderContent = () => {
+    return (
+      <React.Fragment>
+        <Form className="ui form">
+          <Field type="text" name="post" placeholder="What's happening?" />
+          <button type="submit" className="button-postshare">
+            Tweet
+          </button>
+        </Form>
+      </React.Fragment>
+    );
+  };
+
   return (
-    <div>
-      <Form className="ui form">
-        <Field type="text" name="post" placeholder="What's happening?" />
-        <button className="ui button primary">Tweet</button>
-      </Form>
-    </div>
+    <Modal content={renderContent()} onDismiss={() => history.push("/")} />
   );
 };
 

@@ -18,11 +18,15 @@
 
 /* nội dung post */
 .postlist-div {
+  position: relative;
   min-height: 35px;
   border: 1px solid #dcdcdc;
   border-radius: 10px;
   margin-bottom: 10px;
-  overflow: auto;
+  overflow-wrap: break-word;
+  padding-left: 10px;
+  text-align: left;
+  text-indent: -10px;
 }
 
 .postlist-div:hover {
@@ -38,7 +42,6 @@
   color: black;
   margin-top: 8px;
   margin-left: 10px;
-  float: left;
 }
 
 .postlist-content-link:hover {
@@ -46,8 +49,9 @@
 }
 
 .postlist-popup-span {
-  position: relative;
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 5px;
   cursor: pointer;
   margin-right: 10px;
   margin-top: -5px;
@@ -70,3 +74,5 @@
   background-color: #3b5998;
   color: white;
 }
+
+/* modal trong postshare */

@@ -19,13 +19,11 @@
 
 .instagram-text-span {
   color: black;
-  margin-left: 10%;
+  margin-left: 10px;
   font-family: Brush Script MT, sans-serif;
   font-size: xx-large;
 }
 
 .header-icon-span {
-  margin-left: 10%;
-  width: 10%;
-  max-width: 20%;
+  margin-left: 10px;
 }

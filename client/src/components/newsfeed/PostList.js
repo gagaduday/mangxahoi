@@ -14,8 +14,11 @@ class PostList extends React.Component {
     if (post.userId === this.props.currentUserId && post.userId !== null) {
       return (
         <Popup
+          className='postlist-popup-item'
           on="click"
           pinned
+          basic
+          position='bottom right'
           trigger={<span className="postlist-popup-span">...</span>}
         >
           <Link className="postlist-action-link" to={`/posts/edit/${post.id}`}>

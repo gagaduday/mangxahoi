@@ -14,12 +14,16 @@ class PostList extends React.Component {
     if (post.userId === this.props.currentUserId && post.userId !== null) {
       return (
         <Popup
-          className='postlist-popup-item'
+          className="postlist-popup-item"
           on="click"
           pinned
           basic
-          position='bottom right'
-          trigger={<span className="postlist-popup-span">...</span>}
+          position="bottom right"
+          trigger={
+            <span className="postlist-popup-span">
+              <i class="angle down icon" />
+            </span>
+          }
         >
           <Link className="postlist-action-link" to={`/posts/edit/${post.id}`}>
             Edit
@@ -39,13 +43,13 @@ class PostList extends React.Component {
     return this.props.posts.map(post => {
       if (!post) return null;
       return (
-        <div className="postlist-div" key={post.id}>
-          <div className="postlist-content-div">
-            <Link className="postlist-content-link" to={`/posts/${post.id}`}>
+        <div className="postlist-div">
+          <Link className="postlist-content-link" to={`/posts/${post.id}`}>
+            <div className="postlist-content-div" key={post.id}>
               {post.post}
-            </Link>
-          </div>
-          {this.renderAdmin(post)}
+            </div>
+          </Link>
+          <div>{this.renderAdmin(post)}</div>
         </div>
       );
     });

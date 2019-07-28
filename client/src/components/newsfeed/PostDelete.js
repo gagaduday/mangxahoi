@@ -29,7 +29,7 @@ class PostDelete extends React.Component {
 
   renderContent() {
     if (!this.props.post) {
-      return "Are you sure want to delete this stream?";
+      return "Loading";
     }
     return `Are you sure want to delete post: ${this.props.post.post} `;
   }

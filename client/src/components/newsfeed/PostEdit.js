@@ -16,8 +16,8 @@ class PostEdit extends React.Component {
         <div>
           <Form className="ui form">
             <Field type="text" name="post" />
-            <button className="ui button primary" type="submit">
-              Tweet
+            <button className="button-postedit" type="submit">
+              OK
             </button>
           </Form>
         </div>

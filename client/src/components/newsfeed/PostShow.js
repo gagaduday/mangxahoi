@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchPost } from "../../actions";
+import "./post.css";
 
 class PostShow extends React.Component {
   componentDidMount() {
@@ -12,8 +13,8 @@ class PostShow extends React.Component {
       return <div>Loading...</div>;
     }
     return (
-      <div>
-        <p>{this.props.post.post}</p>
+      <div className="ui container postshow-content-div">
+        <p className="postshow-content-text">{this.props.post.post}</p>
       </div>
     );
   }

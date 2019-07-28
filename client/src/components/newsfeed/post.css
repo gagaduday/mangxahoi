@@ -94,4 +94,9 @@
   color: white;
 }
 
-/* modal trong postshare */
+/* post trong postshow */
+.postshow-content-div {
+  margin-top: 100px;
+  font-size: x-large;
+  overflow-wrap: break-word;
+}

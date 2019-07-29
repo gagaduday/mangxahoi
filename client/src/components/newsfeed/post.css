@@ -1,6 +1,5 @@
 /* button tweet trong postshare va postedit */
 .button-postshare {
-  margin-top: 10px;
   color: white;
   font-size: 14px;
   font-family: monospace;
@@ -17,7 +16,6 @@
 }
 
 .button-postedit {
-  margin-top: 10px;
   color: white;
   font-size: 14px;
   font-family: monospace;

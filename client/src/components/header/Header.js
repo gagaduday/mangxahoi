@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import GoogleAuth from "./GoogleAuth";
+import FacebookAuth from "./FacebookAuth";
 
 import "./header.css";
 
@@ -28,6 +29,7 @@ const Header = () => {
         </div>
       </div>
       <GoogleAuth />
+      <FacebookAuth />
     </div>
   );
 };

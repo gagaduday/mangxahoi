@@ -21,7 +21,7 @@ class PostList extends React.Component {
           position="bottom right"
           trigger={
             <span className="postlist-popup-span">
-              <i class="angle down icon" />
+              <i className="angle down icon" />
             </span>
           }
         >

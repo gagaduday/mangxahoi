@@ -16,12 +16,17 @@ class PostEdit extends React.Component {
         <div>
           <Form className="ui form">
             <Field type="text" name="post" />
-            <button className="button-postedit" type="submit">
-              OK
-            </button>
           </Form>
         </div>
       </React.Fragment>
+    );
+  }
+
+  renderActions() {
+    return (
+      <button className="button-postedit" type="submit">
+        OK
+      </button>
     );
   }
 
@@ -32,6 +37,7 @@ class PostEdit extends React.Component {
     return (
       <Modal
         content={this.renderContent()}
+        actions={this.renderActions()}
         onDismiss={() => history.push("/")}
       />
     );

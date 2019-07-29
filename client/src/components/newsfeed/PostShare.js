@@ -17,16 +17,25 @@ const PostShare = () => {
             placeholder="What's happening?"
             autocomplete="off"
           />
-          <button type="submit" className="button-postshare">
-            Tweet
-          </button>
         </Form>
       </React.Fragment>
     );
   };
 
+  const renderActions = () => {
+    return (
+      <button type="submit" className="button-postshare">
+        Tweet
+      </button>
+    );
+  };
+
   return (
-    <Modal content={renderContent()} onDismiss={() => history.push("/")} />
+    <Modal
+      content={renderContent()}
+      actions={renderActions()}
+      onDismiss={() => history.push("/")}
+    />
   );
 };
 

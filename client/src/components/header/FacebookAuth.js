@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import FacebookLogin from "react-facebook-login";
+import React, { Component } from 'react';
+import FacebookLogin from 'react-facebook-login';
 
 export default class FacebookAuth extends Component {
   state = {
     isLoggedIn: false,
-    userID: "",
-    name: "",
-    email: "",
-    picture: ""
+    userID: '',
+    name: '',
+    email: '',
+    picture: '',
   };
 
   responseFacebook = response => {
@@ -15,7 +15,7 @@ export default class FacebookAuth extends Component {
   };
 
   componentClicked = () => {
-    console.log("clicked");
+    console.log('clicked');
   };
 
   render() {

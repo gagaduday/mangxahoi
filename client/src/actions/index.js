@@ -3,6 +3,8 @@ import history from "../history";
 import {
   SIGN_IN,
   SIGN_OUT,
+  SIGN_IN_FB,
+  SIGN_OUT_FB,
   CREATE_POST,
   FETCH_POSTS,
   FETCH_POST,
@@ -23,6 +25,20 @@ export const signIn = userId => {
 export const signOut = () => {
   return {
     type: SIGN_OUT
+  };
+};
+
+// đăng nhập bằng facebook
+export const signInFB = userId => {
+  return {
+    type: SIGN_IN_FB,
+    payload: userId
+  };
+};
+
+export const signOutFB = () => {
+  return {
+    type: SIGN_OUT_FB
   };
 };
 

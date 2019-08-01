@@ -169,13 +169,13 @@ import FacebookLogin from 'react-facebook-login';
 // export default FacebookAuth;
 
 class FacebookAuth extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedStatus: false,
-      id: '',
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     loggedStatus: false,
+  //     id: '',
+  //   };
+  // }
 
   componentDidMount() {
     window.fbAsyncInit = function() {
@@ -205,31 +205,31 @@ class FacebookAuth extends React.Component {
     })(document, 'script', 'facebook-jssdk');
   }
 
-  loggedIn(response) {
-    this.setState({
-      loggedStatus: true,
-      id: response.authResponse.userID,
-    });
-  }
+  // loggedIn(response) {
+  //   this.setState({
+  //     loggedStatus: true,
+  //     id: response.authResponse.userID,
+  //   });
+  // }
 
-  loggedOut() {
-    this.setState({
-      loggedStatus: false,
-    });
-  }
+  // loggedOut() {
+  //   this.setState({
+  //     loggedStatus: false,
+  //   });
+  // }
 
   statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
     if (response.status === 'connected') {
-      this.loggedIn(response);
-      console.log(this.state);
+      this.props.signInFB(response);
+      console.log(this.props);
     } else if (response.status === 'not_authorized') {
-      this.loggedOut();
-      console.log(this.state.loggedStatus);
+      this.props.signOutFB();
+      console.log(this.props.isSignedIn);
     } else {
-      this.loggedOut();
-      console.log(this.state.loggedStatus);
+      this.props.signOutFB();
+      console.log(this.props.isSignedIn);
     }
   }
 
@@ -241,39 +241,47 @@ class FacebookAuth extends React.Component {
     );
   }
 
-  handleClick() {
-    window.FB.login(this.checkLoginState());
-  }
+  // handleClick() {
+  //   window.FB.login(this.checkLoginState());
+  // }
 
   onSignInClick = () => {
-    this.FB.login();
+    window.FB.login();
   };
 
   onSignOutClick = () => {
-    this.FB.logout();
+    window.FB.logout();
   };
 
   render() {
-    if (!this.state.loggedStatus) {
+    if (this.props.isSignedIn === null) {
+      return null;
+    } else if (this.props.isSignedIn) {
       return (
-        <div
-          className="fb-login-button"
-          data-max-rows="1"
-          data-size="large"
-          data-button-type="continue_with"
-          data-show-faces="false"
-          data-auto-logout-link="true"
-          data-use-continue-as="true"
-        />
+        <button
+          onClick={this.onSignOutClick}
+          className="ui blue facebook button"
+        >
+          <i className="facebook icon" />
+          Log Out
+        </button>
       );
     } else {
-      return <div>{this.state.id}</div>;
+      return (
+        <button
+          onClick={this.onSignInClick}
+          className="ui blue facebook button"
+        >
+          <i className="facebook icon" />
+          Log In
+        </button>
+      );
     }
   }
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state);
   return {
     isSignedIn: state.auth.isSignedIn,
   };

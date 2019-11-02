@@ -29,18 +29,18 @@ export const signOut = () => {
 };
 
 // đăng nhập bằng facebook
-export const signInFB = userId => {
-  return {
-    type: SIGN_IN_FB,
-    payload: userId
-  };
-};
+// export const signInFB = userId => {
+//   return {
+//     type: SIGN_IN_FB,
+//     payload: userId
+//   };
+// };
 
-export const signOutFB = () => {
-  return {
-    type: SIGN_OUT_FB
-  };
-};
+// export const signOutFB = () => {
+//   return {
+//     type: SIGN_OUT_FB
+//   };
+// };
 
 // // tạo post
 export const createPost = values => async (dispatch, getState) => {
@@ -80,3 +80,31 @@ export const deletePost = id => async dispatch => {
   dispatch({ type: DELETE_POST, payload: id });
   history.push("/");
 };
+
+//drop zone
+// import {
+//   PHOTOS_FETCHED,
+//   PHOTOS_UPLOADED,
+//   DELETE_UPLOADED_PHOTO,
+//   UPDATE_UPLOADED_PHOTO
+// } from "../utils/Constants";
+
+// export const photosFetched = photos => ({
+//   type: PHOTOS_FETCHED,
+//   photos: photos
+// });
+
+// export const photosUploaded = photos => ({
+//   type: PHOTOS_UPLOADED,
+//   photos: photos
+// });
+
+// export const updateUploadedPhoto = uploadedPhoto => ({
+//   type: UPDATE_UPLOADED_PHOTO,
+//   uploadedPhoto: uploadedPhoto
+// });
+
+// export const deleteUploadedPhoto = publicId => ({
+//   type: DELETE_UPLOADED_PHOTO,
+//   publicId: publicId
+// });

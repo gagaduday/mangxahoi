@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { signInFB, signOutFB } from '../../actions';
-import FacebookLogin from 'react-facebook-login';
+import React from "react";
+import { connect } from "react-redux";
+import { signInFB, signOutFB } from "../../actions";
+import FacebookLogin from "react-facebook-login";
 
 // class FacebookAuth extends React.Component {
 //   componentDidMount(response) {
@@ -169,21 +169,21 @@ import FacebookLogin from 'react-facebook-login';
 // export default FacebookAuth;
 
 class FacebookAuth extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     loggedStatus: false,
-  //     id: '',
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedStatus: false,
+      id: ""
+    };
+  }
 
   componentDidMount() {
     window.fbAsyncInit = function() {
       window.FB.init({
-        appId: '727522131018654',
+        appId: "727522131018654",
         cookie: true,
         xfbml: true,
-        version: 'v2.11',
+        version: "v2.11"
       });
 
       window.FB.getLoginStatus(
@@ -202,34 +202,34 @@ class FacebookAuth extends React.Component {
       js.src =
         "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=''";
       fjs.parentNode.insertBefore(js, fjs);
-    })(document, 'script', 'facebook-jssdk');
+    })(document, "script", "facebook-jssdk");
   }
 
-  // loggedIn(response) {
-  //   this.setState({
-  //     loggedStatus: true,
-  //     id: response.authResponse.userID,
-  //   });
-  // }
+  loggedIn(response) {
+    this.setState({
+      loggedStatus: true,
+      id: response.authResponse.userID
+    });
+  }
 
-  // loggedOut() {
-  //   this.setState({
-  //     loggedStatus: false,
-  //   });
-  // }
+  loggedOut() {
+    this.setState({
+      loggedStatus: false
+    });
+  }
 
   statusChangeCallback(response) {
-    console.log('statusChangeCallback');
+    console.log("statusChangeCallback");
     console.log(response);
-    if (response.status === 'connected') {
-      this.props.signInFB(response);
-      console.log(this.props);
-    } else if (response.status === 'not_authorized') {
-      this.props.signOutFB();
-      console.log(this.props.isSignedIn);
+    if (response.status === "connected") {
+      this.loggedIn(response);
+      console.log(this.state);
+    } else if (response.status === "not_authorized") {
+      this.loggedOut();
+      console.log(this.state.loggedStatus);
     } else {
-      this.props.signOutFB();
-      console.log(this.props.isSignedIn);
+      this.loggedOut();
+      console.log(this.state.loggedStatus);
     }
   }
 
@@ -241,49 +241,41 @@ class FacebookAuth extends React.Component {
     );
   }
 
-  // handleClick() {
-  //   window.FB.login(this.checkLoginState());
-  // }
+  handleClick() {
+    window.FB.login(this.checkLoginState());
+  }
 
-  onSignInClick = () => {
-    window.FB.login();
-  };
+  // onSignInClick = () => {
+  //   this.FB.login();
+  // };
 
-  onSignOutClick = () => {
-    window.FB.logout();
-  };
+  // onSignOutClick = () => {
+  //   this.FB.logout();
+  // };
 
   render() {
-    if (this.props.isSignedIn === null) {
-      return null;
-    } else if (this.props.isSignedIn) {
+    if (!this.state.loggedStatus) {
       return (
-        <button
-          onClick={this.onSignOutClick}
-          className="ui blue facebook button"
-        >
-          <i className="facebook icon" />
-          Log Out
-        </button>
+        <div
+          className="fb-login-button"
+          data-max-rows="1"
+          data-size="large"
+          data-button-type="continue_with"
+          data-show-faces="false"
+          data-auto-logout-link="true"
+          data-use-continue-as="true"
+        />
       );
     } else {
-      return (
-        <button
-          onClick={this.onSignInClick}
-          className="ui blue facebook button"
-        >
-          <i className="facebook icon" />
-          Log In
-        </button>
-      );
+      return <div>{this.state.id}</div>;
     }
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
-    isSignedIn: state.auth.isSignedIn,
+    isSignedIn: state.auth.isSignedIn
   };
 };
 

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { createPost } from "../../actions";
 import history from "../../history";
 import Modal from "../Modal";
+import DropZone from "./DropZone";
 import "./post.css";
 
 const PostShare = () => {
@@ -18,6 +19,7 @@ const PostShare = () => {
             autocomplete="off"
           />
         </Form>
+        {/* <DropZone /> */}
       </React.Fragment>
     );
   };
